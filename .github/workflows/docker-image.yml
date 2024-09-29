@@ -32,9 +32,9 @@ jobs:
         with:
           registry: ghcr.io
           username: funy-z
-          password: ${{ secrets.ORG_PAT }}
+          password: ${{ secrets.ORG_PAT_V2 }}
 
       - name: Push Docker Image to GitHub Container Registry
         run: |
-          echo ${{ secrets.ORG_PAT }}
+          echo ${{ secrets.ORG_PAT_V2 }}
           docker push ghcr.io/funy-z/ai-composiso-frontend:${{ github.sha }}
