@@ -4,6 +4,7 @@ import { ElConfigProvider } from 'element-plus'
 
 const size = 'default'
 const zIndex = 3000
+console.log('@@@build test')
 </script>
 
 <template>
