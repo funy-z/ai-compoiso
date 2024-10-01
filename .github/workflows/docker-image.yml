@@ -1,6 +1,12 @@
-name: ai-composiso - Build and Push Docker Image
-run-name: ${{ github.actor }} - ai-composiso - Build and Push Docker Image 🚀
-on: [push]
+name: ai-composiso - Frontend Image
+run-name: ai-composiso - Frontend Image - ${{ github.run_number }} 🚀
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   Build:
     runs-on: ubuntu-latest
