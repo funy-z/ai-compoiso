@@ -20,3 +20,9 @@ curl -N -X POST "http://127.0.0.1:8000/ai_docs/generate" \
   "op_sub_type": ""
 }'
 ```
+
+# 2. 使用conda生成需要的安装包
+
+```shell
+conda env export > environment.yml
+```
