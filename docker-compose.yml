@@ -1,21 +1,31 @@
 version: '3.8'
 
 services:
-  ai-composiso-frontend:
-    image: ghcr.io/funy-z/ai-composiso-frontend:e96efb6d36f2d5d197c05aaf5e1e1b7abf635654
+  ai-compoiso-frontend:
+    image: ghcr.io/funy-z/ai-compoiso-frontend:latest
     volumes:
       - frontend-share:/app/frontend-share
+
+  ai-compoiso-backend:
+    image: funy-z/ai-compoiso-backend:latest
+    environment:
+      - ENVIRONMENT=production
+    volumes:
+      - /data/environ:/app/environ:ro
+      - /var/log/ai_compoiso_backend:/app/logs
+      - /data/sqlite3_db:/app/sqlite3_db
 
   nginx:
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "80:80"
     volumes:
       - frontend-share:/usr/share/nginx/html:ro
       - /app/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /app/nginx/conf.d:/etc/nginx/conf.d:ro
     depends_on:
-      - ai-composiso-frontend
+      - ai-compoiso-frontend
+      - ai-compoiso-backend
 
 volumes:
   frontend-share:
